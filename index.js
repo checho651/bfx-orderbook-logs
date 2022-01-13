@@ -14,11 +14,11 @@ const bfxapi = require('bitfinex-api-node')
 let obArrToLog = []
 
 function logObArr (ob) {
-  obArrToLog.push({
-    mts: Date.now(),
-    bids: ob.bids,
-    asks: ob.asks
-  })
+  obArrToLog.push([
+    Date.now(),
+    ob,
+    '-'
+  ])
   if (obArrToLog.length > logArrayLength) {
     console.log('OB:', JSON.stringify(obArrToLog))
     obArrToLog = []
@@ -26,7 +26,7 @@ function logObArr (ob) {
 }
 
 async function main () {
-  const ws = new bfxapi.WSv2({ transform: true, manageOrderBooks: true })
+  const ws = new bfxapi.WSv2({ transform: false, manageOrderBooks: true })
 
   await ws.open()
   console.log(Date.now(), 'OPEN WS CONNECTION.')
