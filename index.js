@@ -26,8 +26,7 @@ function logObArr (ob) {
 }
 
 async function main () {
-  const ws = new bfxapi.WSv2({ transform: true, manageOrderBooks: true })
-
+  const ws = new bfxapi.WSv2({ transform: true, manageOrderBooks: false })
   await ws.open()
   console.log(Date.now(), 'OPEN WS CONNECTION.')
 
